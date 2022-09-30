@@ -1,0 +1,38 @@
+<div class="jumbotron jumbotron-fluid bg-dark">
+  <div class="container">
+    <h1 class="display-4">CodeFactory</h1>
+  </div>
+</div>
+<div class="container mt-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">QUANTITY</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="products.length">
+      <tr *ngFor="let product of products" class="table-row">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>
+          <button type="button" class="btn btn-info" routerLink="/edit/{{product.id}}">Edit </button>
+          &#160;
+          <button type="button" class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container mt-4 text-center">
+  <button id="addBtn" type="button"   class="btn btn-info" routerLink="/add">
+    Add New Product
+  </button>
+</div>
