@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { TitleStrategy } from '@angular/router'
+
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
+  
   url: string = 'http://localhost:8000'
 
   constructor(private http: HttpClient) {}
@@ -28,10 +29,11 @@ return this.http.get(this.url+ '/api/products/'+id);
   }
 
   update(id:number, product:any): Observable<any>{
-   return this.http.put(this.url+'api/products'+id, product,this.httpOptions )  
+   return this.http.put(this.url+'/api/products/'+id, product,this.httpOptions )  
   }
 
   deleteProduct(id:any):Observable<any>{
- return this.http.delete<any>(this.url+ '/api/products'+id,this.httpOptions)
+ return this.http.delete<any>(this.url+ '/api/products/'+id,this.httpOptions)
   }
+
 }

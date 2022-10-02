@@ -11,7 +11,7 @@ class ProductController extends Controller
         $data = Product::get();
         return response()->json($data, 200);
       }
-  
+ 
       public function create(Request $request){
         $data['name'] = $request['name'];
         $data['price'] = $request['price'];
@@ -22,7 +22,7 @@ class ProductController extends Controller
             'message' => "Successfully created",
             'success' => true
         ], 200);
-      }
+      }  
       
       public function get($id){
         $data = Product::find($id);

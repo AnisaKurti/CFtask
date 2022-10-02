@@ -1,43 +1,45 @@
-<div class="container  mt-3">
-
+<div class="container mt-3">
+  <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="row">
-    <div class="col-6">
-<div class="form-floating mb-3">
-    <input type="productName" class="form-control" #productName placeholder="Product Name">
-    <label for="productName">Product Name</label>
-  </div>
-</div>
-
-
-<div class="col-3">
-
-    <div class="form-floating">
-        <input type="number" class="form-control" #productPrice placeholder="Price">
-        <label for="productPrice">Price</label>
+      <div class="col-6">
+        <div class="form-floating mb-3">
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control">
+          <label>Name:</label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-floating">
+          <input
+            formControlName="price"
+            type="text"
+            class="form-control">
+          <label>Price:</label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-floating">
+          <input
+            formControlName="quantity"
+            type="text"
+            class="form-control">
+          <label>Quantity:</label>
+        </div>
       </div>
     </div>
-    
-    <div class="col-3">
-
-        <div class="form-floating">
-            <input type="number" class="form-control" #productQuantity placeholder="Price">
-            <label for="productQuantity">Quantity</label>
-          </div>
-        </div>
-</div>
-
-<div class="col-12">
-
-
-    <div class="form-floating">
-        <textarea class="form-control" placeholder="Write Product Description" #productDescription style="height: 100px"></textarea>
-        <label for="productDescription">Description</label>
+    <div class="col-12">
+      <div class="form-floating">
+        <input
+          formControlName="description"
+          type="text"
+          class="form-control">
+        <label>Description:</label>
       </div>
-</div>
-
-</div>
-
-<div class="container text-center mb-5">
-    <button type="button" (click)="add (productName.value, productPrice.value, productDescription.value, productQuantity.value);
-    productName.value=''; productPrice.value=''; productDescription.value=''; productQuantity.value=''" class="btn btn-dark mt-2">Add Product</button>
+    </div>
+    <div class="container text-center mb-5">
+      <button class="btn btn-primary btn btn-dark mt-2" type="submit">Add product</button>
+    </div>
+  </form>
 </div>
