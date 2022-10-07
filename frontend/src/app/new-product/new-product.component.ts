@@ -11,7 +11,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class NewProductComponent implements OnInit {
   form:FormGroup;
 
-  constructor(private productService: ProductsService) {
+  constructor(private productService: ProductsService, private router:Router) {
   }
 
   ngOnInit(): void {
@@ -24,9 +24,9 @@ export class NewProductComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.form.value);
     this.productService.addProduct(this.form.value).subscribe(res => {
-      console.log('Product created successfully!');
+      this.router.navigateByUrl('/');
+    console.log('Product created successfully!');
     })
   }
 }

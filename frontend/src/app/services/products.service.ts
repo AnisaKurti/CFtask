@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
+import { Product } from '../models/products'
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   listProducts() {
-    return this.http.get<any>(this.url + '/api/products')
+    return this.http.get<Product[]>(this.url + '/api/products')
   }
   httpOptions = {
      headers : new HttpHeaders({
@@ -20,20 +21,21 @@ export class ProductsService {
      })
   }
 
-  addProduct(product: any): Observable<any> {
-    return this.http.post<any>(this.url + '/api/products', product, this.httpOptions);
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.url + '/api/products', product, this.httpOptions);
   }
 
-  find(id:number): Observable<any> {
-return this.http.get(this.url+ '/api/products/'+id);
+  find(id:number): Observable<Product> {
+return this.http.get<Product>(this.url+ '/api/products/'+id);
   }
 
-  update(id:number, product:any): Observable<any>{
-   return this.http.put(this.url+'/api/products/'+id, product,this.httpOptions )  
+  update(id:number, product:Product): Observable<Product>{
+   return this.http.put<Product>(this.url+'/api/products/'+id, product,this.httpOptions )  
   }
 
-  deleteProduct(id:any):Observable<any>{
- return this.http.delete<any>(this.url+ '/api/products/'+id,this.httpOptions)
+  deleteProduct(id:number):Observable<Product>{
+ return this.http.delete<Product>(this.url+ '/api/products/'+id,this.httpOptions)
   }
 
 }
+ 
